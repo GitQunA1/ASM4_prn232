@@ -21,6 +21,9 @@ namespace EVRental.SoapServices.QuanNH.SoapServices
         [OperationContract]
         Task<CheckOutQuanNh> GetByIdAsync(int id);
 
+    [OperationContract]
+    Task<List<ReturnCondition>> GetReturnConditionsAsync();
+
         // Mutation
         [OperationContract]
         Task<int> CreateAsync(CheckOutQuanNh checkOutQuanNh);
@@ -62,6 +65,19 @@ namespace EVRental.SoapServices.QuanNH.SoapServices
             catch (Exception ex)
             {
                 throw new FaultException($"Unable to retrieve checkout record with id {id}. {ex.Message}");
+            }
+        }
+
+        public async Task<List<ReturnCondition>> GetReturnConditionsAsync()
+        {
+            try
+            {
+                var items = await _serviceProviders.ReturnConditionService.GetAllAsync();
+                return items?.Select(MapToSoapModel).Where(item => item != null).ToList() ?? new List<ReturnCondition>();
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException($"Unable to retrieve return conditions. {ex.Message}");
             }
         }
 

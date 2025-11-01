@@ -1,6 +1,7 @@
 ﻿using EVRental.MVCWebApp.QuanNH.Models;
 using EVRentalWCFServiceReference;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,8 +74,10 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
             }
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            await PopulateReturnConditionsAsync();
+
             return View(new CheckOutQuanNhViewModel
             {
                 CheckOutTime = DateTime.Now
@@ -87,6 +90,7 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
         {
             if (!ModelState.IsValid)
             {
+                await PopulateReturnConditionsAsync(viewModel.ReturnConditionId);
                 return View(viewModel);
             }
 
@@ -114,6 +118,7 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
                 CloseClient(client);
             }
 
+            await PopulateReturnConditionsAsync(viewModel.ReturnConditionId);
             return View(viewModel);
         }
 
@@ -133,8 +138,9 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
                 {
                     return NotFound();
                 }
-
-                return View(MapToViewModel(item));
+                var viewModel = MapToViewModel(item);
+                await PopulateReturnConditionsAsync(viewModel?.ReturnConditionId);
+                return View(viewModel);
             }
             catch (Exception ex)
             {
@@ -158,6 +164,7 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
 
             if (!ModelState.IsValid)
             {
+                await PopulateReturnConditionsAsync(viewModel.ReturnConditionId);
                 return View(viewModel);
             }
 
@@ -185,6 +192,7 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
                 CloseClient(client);
             }
 
+            await PopulateReturnConditionsAsync(viewModel.ReturnConditionId);
             return View(viewModel);
         }
 
@@ -305,6 +313,50 @@ namespace EVRental.MVCWebApp.QuanNH.Controllers
             }
 
             return dto;
+        }
+
+        private async Task PopulateReturnConditionsAsync(int? selectedId = null)
+        {
+            var client = CreateClient();
+
+            try
+            {
+                var items = await client.GetReturnConditionsAsync();
+                var options = items?
+                    .OrderBy(item => item.Name)
+                    .Select(item => new SelectListItem
+                    {
+                        Value = item.ReturnConditionId.ToString(),
+                        Text = string.IsNullOrWhiteSpace(item.Name) ? $"Tình trạng #{item.ReturnConditionId}" : item.Name,
+                        Selected = selectedId.HasValue && item.ReturnConditionId == selectedId
+                    })
+                    .ToList() ?? new List<SelectListItem>();
+
+                options.Insert(0, new SelectListItem
+                {
+                    Value = string.Empty,
+                    Text = "-- Chọn tình trạng trả xe --",
+                    Selected = !selectedId.HasValue
+                });
+
+                ViewBag.ReturnConditions = options;
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Không thể tải danh sách tình trạng trả xe. {ex.Message}";
+                ViewBag.ReturnConditions = new List<SelectListItem>
+                {
+                    new SelectListItem
+                    {
+                        Value = string.Empty,
+                        Text = "Không thể tải dữ liệu tình trạng"
+                    }
+                };
+            }
+            finally
+            {
+                CloseClient(client);
+            }
         }
 
         private static void CloseClient(CheckOutQuanNhSoapServiceClient client)

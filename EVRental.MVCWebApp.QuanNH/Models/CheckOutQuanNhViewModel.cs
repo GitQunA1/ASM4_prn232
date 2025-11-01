@@ -52,7 +52,7 @@ namespace EVRental.MVCWebApp.QuanNH.Models
         [DisplayName("Customer Signature")]
         public string? CustomerSignature { get; set; }
 
-        [DisplayName("Return Condition ID")]
+    [DisplayName("Return Condition")]
         public int? ReturnConditionId { get; set; }
 
         [DisplayName("Return Condition")]

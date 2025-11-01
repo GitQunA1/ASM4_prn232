@@ -42,7 +42,7 @@
 		</div>
 		<div class="col-md-6">
 			<label asp-for="ReturnConditionId" class="form-label"></label>
-			<input asp-for="ReturnConditionId" type="number" class="form-control" />
+			<select asp-for="ReturnConditionId" class="form-select" asp-items="ViewBag.ReturnConditions"></select>
 			<span asp-validation-for="ReturnConditionId" class="text-danger"></span>
 		</div>
 		<div class="col-md-6">

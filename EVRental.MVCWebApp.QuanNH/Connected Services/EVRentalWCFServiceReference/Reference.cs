@@ -349,6 +349,9 @@ namespace EVRentalWCFServiceReference
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckOutQuanNhSoapService/GetAll", ReplyAction="http://tempuri.org/ICheckOutQuanNhSoapService/GetAllResponse")]
         System.Threading.Tasks.Task<EVRentalWCFServiceReference.CheckOutQuanNh[]> GetAllAsync();
         
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckOutQuanNhSoapService/GetReturnConditions", ReplyAction="http://tempuri.org/ICheckOutQuanNhSoapService/GetReturnConditionsResponse")]
+    System.Threading.Tasks.Task<EVRentalWCFServiceReference.ReturnCondition[]> GetReturnConditionsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckOutQuanNhSoapService/GetById", ReplyAction="http://tempuri.org/ICheckOutQuanNhSoapService/GetByIdResponse")]
         System.Threading.Tasks.Task<EVRentalWCFServiceReference.CheckOutQuanNh> GetByIdAsync(int id);
         
@@ -415,6 +418,11 @@ namespace EVRentalWCFServiceReference
         public System.Threading.Tasks.Task<EVRentalWCFServiceReference.CheckOutQuanNh[]> GetAllAsync()
         {
             return base.Channel.GetAllAsync();
+        }
+        
+        public System.Threading.Tasks.Task<EVRentalWCFServiceReference.ReturnCondition[]> GetReturnConditionsAsync()
+        {
+            return base.Channel.GetReturnConditionsAsync();
         }
         
         public System.Threading.Tasks.Task<EVRentalWCFServiceReference.CheckOutQuanNh> GetByIdAsync(int id)
