@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVRental.Repositories.QuanNH", "EVRental.Repositories.QuanNH\EVRental.Repositories.QuanNH.csproj", "{5C692D26-ADB3-8752-3712-93CD28F85ABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVRental.Services.QuanNH", "EVRental.Services.QuanNH\EVRental.Services.QuanNH.csproj", "{A2E462FE-23D6-870A-0AC5-7127E7E0F586}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVRental.SoapServices.QuanNH", "EVRental.SoapServices.QuanNH\EVRental.SoapServices.QuanNH.csproj", "{F539FF12-95C1-43CC-90EF-FDB7CE2E96D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVRental.SoapClient.ConsoleApp.QuanNH", "EVRental.SoapClient.ConsoleApp.QuanNH\EVRental.SoapClient.ConsoleApp.QuanNH.csproj", "{C086952A-A2BA-4812-9384-C960934EACC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C692D26-ADB3-8752-3712-93CD28F85ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C692D26-ADB3-8752-3712-93CD28F85ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C692D26-ADB3-8752-3712-93CD28F85ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C692D26-ADB3-8752-3712-93CD28F85ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E462FE-23D6-870A-0AC5-7127E7E0F586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E462FE-23D6-870A-0AC5-7127E7E0F586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E462FE-23D6-870A-0AC5-7127E7E0F586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E462FE-23D6-870A-0AC5-7127E7E0F586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F539FF12-95C1-43CC-90EF-FDB7CE2E96D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F539FF12-95C1-43CC-90EF-FDB7CE2E96D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F539FF12-95C1-43CC-90EF-FDB7CE2E96D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F539FF12-95C1-43CC-90EF-FDB7CE2E96D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C086952A-A2BA-4812-9384-C960934EACC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C086952A-A2BA-4812-9384-C960934EACC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C086952A-A2BA-4812-9384-C960934EACC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C086952A-A2BA-4812-9384-C960934EACC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A3B866D-633C-499C-B411-92DDECED960D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@EVRental.SoapServices.QuanNH_HostAddress = http://localhost:5068
+
+GET {{EVRental.SoapServices.QuanNH_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
