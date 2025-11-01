@@ -1,0 +1,62 @@
+﻿﻿@using System.Linq
+@model IEnumerable<EVRental.MVCWebApp.QuanNH.Models.CheckOutQuanNhViewModel>
+
+@{
+	ViewData["Title"] = "Check-out Records";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h1 class="h3">Check-out Records</h1>
+	<a asp-action="Create" class="btn btn-primary">Create New</a>
+</div>
+
+@if (TempData["SuccessMessage"] is string successMessage)
+{
+	<div class="alert alert-success" role="alert">@successMessage</div>
+}
+
+@if (TempData["ErrorMessage"] is string errorMessage)
+{
+	<div class="alert alert-danger" role="alert">@errorMessage</div>
+}
+
+<table class="table table-striped table-bordered">
+	<thead class="table-light">
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.CheckOutQuanNhid)</th>
+			<th>@Html.DisplayNameFor(model => model.CheckOutTime)</th>
+			<th>@Html.DisplayNameFor(model => model.ReturnDate)</th>
+			<th>@Html.DisplayNameFor(model => model.TotalCost)</th>
+			<th>@Html.DisplayNameFor(model => model.IsPaid)</th>
+			<th>@Html.DisplayNameFor(model => model.ReturnConditionName)</th>
+			<th class="text-end">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+@if (Model != null && Model.Any())
+{
+		foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.CheckOutQuanNhid</td>
+				<td>@(item.CheckOutTime?.ToString("dd/MM/yyyy HH:mm") ?? "-" )</td>
+				<td>@(item.ReturnDate?.ToString("dd/MM/yyyy") ?? "-" )</td>
+				<td>@(item.TotalCost?.ToString("N0") ?? "-")</td>
+				<td>@(item.IsPaid ? "Yes" : "No")</td>
+				<td>@(string.IsNullOrWhiteSpace(item.ReturnConditionName) ? "-" : item.ReturnConditionName)</td>
+				<td class="text-end">
+					<a asp-action="Details" asp-route-id="@item.CheckOutQuanNhid" class="btn btn-sm btn-outline-info me-1">Details</a>
+					<a asp-action="Edit" asp-route-id="@item.CheckOutQuanNhid" class="btn btn-sm btn-outline-secondary me-1">Edit</a>
+					<a asp-action="Delete" asp-route-id="@item.CheckOutQuanNhid" class="btn btn-sm btn-outline-danger">Delete</a>
+				</td>
+			</tr>
+		}
+}
+else
+{
+		<tr>
+			<td colspan="7" class="text-center">No records found.</td>
+		</tr>
+}
+	</tbody>
+</table>

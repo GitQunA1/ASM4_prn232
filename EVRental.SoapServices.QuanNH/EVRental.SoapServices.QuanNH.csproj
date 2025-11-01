@@ -15,4 +15,8 @@
     <ProjectReference Include="..\EVRental.Services.QuanNH\EVRental.Services.QuanNH.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

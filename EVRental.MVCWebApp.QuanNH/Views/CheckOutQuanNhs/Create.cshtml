@@ -1,0 +1,90 @@
+﻿@model EVRental.MVCWebApp.QuanNH.Models.CheckOutQuanNhViewModel
+
+@{
+	ViewData["Title"] = "Create Check-out";
+}
+
+<h1 class="h3 mb-3">Create Check-out</h1>
+
+<form asp-action="Create" method="post">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+	<div class="row g-3">
+		<div class="col-md-6">
+			<label asp-for="CheckOutTime" class="form-label"></label>
+			<input asp-for="CheckOutTime" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" class="form-control" />
+			<span asp-validation-for="CheckOutTime" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<label asp-for="ReturnDate" class="form-label"></label>
+			<input asp-for="ReturnDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+			<span asp-validation-for="ReturnDate" class="text-danger"></span>
+		</div>
+		<div class="col-md-4">
+			<label asp-for="TotalCost" class="form-label"></label>
+			<input asp-for="TotalCost" type="number" step="0.01" class="form-control" />
+			<span asp-validation-for="TotalCost" class="text-danger"></span>
+		</div>
+		<div class="col-md-4">
+			<label asp-for="ExtraCost" class="form-label"></label>
+			<input asp-for="ExtraCost" type="number" step="0.01" class="form-control" />
+			<span asp-validation-for="ExtraCost" class="text-danger"></span>
+		</div>
+		<div class="col-md-4">
+			<label asp-for="LateFee" class="form-label"></label>
+			<input asp-for="LateFee" type="number" step="0.01" class="form-control" />
+			<span asp-validation-for="LateFee" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<label asp-for="PaymentMethod" class="form-label"></label>
+			<input asp-for="PaymentMethod" class="form-control" />
+			<span asp-validation-for="PaymentMethod" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<label asp-for="ReturnConditionId" class="form-label"></label>
+			<input asp-for="ReturnConditionId" type="number" class="form-control" />
+			<span asp-validation-for="ReturnConditionId" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<div class="form-check mt-4">
+				<input asp-for="IsPaid" class="form-check-input" />
+				<label asp-for="IsPaid" class="form-check-label"></label>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-check mt-4">
+				<input asp-for="IsDamageReported" class="form-check-input" />
+				<label asp-for="IsDamageReported" class="form-check-label"></label>
+			</div>
+		</div>
+		<div class="col-12">
+			<label asp-for="Notes" class="form-label"></label>
+			<textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+			<span asp-validation-for="Notes" class="text-danger"></span>
+		</div>
+		<div class="col-12">
+			<label asp-for="CustomerFeedback" class="form-label"></label>
+			<textarea asp-for="CustomerFeedback" class="form-control" rows="3"></textarea>
+			<span asp-validation-for="CustomerFeedback" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<label asp-for="StaffSignature" class="form-label"></label>
+			<input asp-for="StaffSignature" class="form-control" />
+			<span asp-validation-for="StaffSignature" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<label asp-for="CustomerSignature" class="form-label"></label>
+			<input asp-for="CustomerSignature" class="form-control" />
+			<span asp-validation-for="CustomerSignature" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<button type="submit" class="btn btn-primary">Create</button>
+		<a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancel</a>
+	</div>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

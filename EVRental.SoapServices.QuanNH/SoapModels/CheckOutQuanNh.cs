@@ -15,7 +15,7 @@ public partial class CheckOutQuanNh
     [DataMember]
     public DateTime? CheckOutTime { get; set; }
     [DataMember]
-    public DateOnly? ReturnDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
     [DataMember]
     public decimal? ExtraCost { get; set; }
     [DataMember]
